@@ -3,6 +3,7 @@
     <div class="navbar-item">
       <div class="buttons">
         <% if current_user %>
+          <%= link_to "Zur Übersicht", projects_path, class: 'button'%>
           <%= button_to "Log out #{current_user.id}", logout_path, class:'button', method: :delete, data: { confirm: "Are you sure?" } %>
         <% end %>
       </div>
