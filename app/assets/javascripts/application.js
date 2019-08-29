@@ -13,3 +13,7 @@
 //= require jquery
 //= require rails-ujs
 //= require_tree .
+
+import { test } from './test';
+
+console.log(test('Jan'));

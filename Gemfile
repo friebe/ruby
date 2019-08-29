@@ -3,6 +3,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.6.3'
 
+#html compiler
 gem 'haml'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
@@ -32,6 +33,7 @@ gem 'jbuilder', '~> 2.5'
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
 
+#encryption
 gem 'bcrypt'
 
 
@@ -72,3 +74,8 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'jquery-rails'
+
+#js es6
+gem 'sprockets', '4.0.0.beta5'
+gem 'babel-transpiler'
+gem 'sprockets-commoner'
