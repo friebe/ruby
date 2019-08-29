@@ -1,0 +1,20 @@
+= form_for @project, url: {action: 'create'} do |pf|
+  %div.field
+    = pf.label :name, "Name", class:"label"
+    = pf.text_field :name, class: "input"
+    = @project.errors[:name].to_sentence if @project.errors[:name].any?
+
+  %div.field
+    = pf.label :description, "Description", class:"label"
+    = pf.text_field :description, class: "input"
+
+  %div.field
+    %div.select
+      = pf.select :user_id,
+        options_for_select(@users, @project.user_id),
+        {},
+        { class: "" }
+
+  %div.field
+    = link_to 'Back', projects_path, :class => "button"
+    = pf.submit "Save", class: "button is-success"

@@ -1,0 +1,11 @@
+<nav class="navbar is-link" role="navigation" aria-label="main navigation">
+  <div class="navbar-end">
+    <div class="navbar-item">
+      <div class="buttons">
+        <% if current_user %>
+          <%= button_to "Log out #{current_user.id}", logout_path, class:'button', method: :delete, data: { confirm: "Are you sure?" } %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</nav>

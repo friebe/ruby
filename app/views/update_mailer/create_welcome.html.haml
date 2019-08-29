@@ -1,0 +1,5 @@
+- @projects_with_comments.each do |project, comments|
+  %h1.title= project.name
+  - comments.each do |comment|
+    = comment.body
+    %br/

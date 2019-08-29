@@ -1,0 +1,28 @@
+- if current_user.admin?
+  %div= link_to 'Create Lead', new_user_path, class:"button is-pulled-right is-text"
+
+
+%table.table.is-fullwidth.is-hoverable
+  %thead
+    %tr
+      %th= 'id'
+      %th= 'Name'
+      %th= 'Description'
+      %th= 'Owner'
+      %th= ''
+      %th= ''
+      %th= ''
+  %tbody
+  - @projects.each do |project|
+    %tr
+      %td= project.id
+      %td= project.name
+      %td= project.description
+      %td= project.user.present? ? project.user.username : '-'
+      %td= link_to 'Show', project_path(project), class:"button is-info"
+      %td= link_to 'Edit', edit_project_path(project), class:"button is-link"
+      %td= button_to 'Delete', project_path(project), method: :delete, class:"button is-danger"
+
+- if current_user.admin?
+  = link_to 'New Project', new_project_path, :class => "button is-primary"
+

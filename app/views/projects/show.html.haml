@@ -1,0 +1,35 @@
+%div.field
+  = label_tag :name, "Name", class:"label"
+  = text_field_tag :name, @project.name, :disabled => true, :class => "input"
+%div.field
+  = label_tag  :description, "Description", class:"label"
+  = text_field_tag :description, @project.description, :disabled => true, :class => "input"
+%div.field
+  = label_tag :username, "Owner", class:"label"
+  = text_field_tag :username, @project.user.username, :disabled => true, :class => "input"
+
+%div.title Comment Section
+= form_with model: @comment, url: project_comments_path(@project), local: true do |f|
+  %div.media-content
+    %div.field
+      = f.label :author, "Author", class:"label"
+      = f.text_field :author, class: "input"
+      = @comment.errors[:author].to_sentence if @comment.errors[:author].any?
+    %div.field
+      %div.control
+        = f.text_area :body, class: 'textarea'
+        = @comment.errors[:body].to_sentence if @comment.errors[:body].any?
+    %nav.level
+      %div.level-left
+        %div.level-item
+          = f.submit "ADD Message", class: "button is-info"
+
+%div.section
+  - @project.comments.order(created_at: :desc).each do |msg|
+    %div.field
+      = "Written by #{msg.author} at #{msg.created_at.strftime("%b %d, %Y - %I:%M%p")}:"
+    %div.field
+      = msg.body
+
+
+

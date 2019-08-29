@@ -1,0 +1,18 @@
+= form_for @project, url: {action: 'update'} do |f|
+  %div.field
+    = f.label :name, "Name", class:"label"
+    = f.text_field :name, class: "input"
+
+  %div.field
+    = f.label :description, "Beschreibung", class:"label"
+    = f.text_field :description, class: "input"
+
+  - if current_user.admin?
+    %div.field
+      %div.select
+        -#TODO collection o select ?
+        = f.collection_select :user_id, @users, :id, :username, prompt: 'Choose...'
+
+
+  %div.field
+    = f.submit "UPDATE", class: "button"
